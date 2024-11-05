@@ -19,7 +19,7 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    car_manager.create_car()
+    car_manager.create_car(scoreboard.level)
     car_manager.move_cars()
     for car in car_manager.cars:
         if player.distance(car)<22:
@@ -27,7 +27,7 @@ while game_is_on:
             game_is_on=False
     if player.is_at_finish():
         player.restart()
-        car_manager.level_up()
         scoreboard.update_level()
+        car_manager.level_up(scoreboard.level)
 
 screen.exitonclick()
